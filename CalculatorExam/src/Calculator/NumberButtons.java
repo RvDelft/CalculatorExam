@@ -3,15 +3,34 @@ package Calculator;
 import java.awt.event.*;
 
 public class NumberButtons extends Buttons implements ActionListener{
-	
-	public NumberButtons (Engine engine, String buttonValue){
-		super(engine, buttonValue);
+	/**
+	 * constructor of NumberButtons.
+	 * takes 3 parameters and give them to super constructor (Buttons)
+	 * also referens to the actionlistener
+	 * @param Engine engine
+	 * @param Display display
+	 * @param String buttonValue
+	 */
+	public NumberButtons (Engine engine, Display display, String buttonValue){
+		super(engine, display, buttonValue);
 		addActionListener(this);
 	}
-
+	/**
+	 * Add input to baseDouble if usedMathtoken is null (meens this is the begining of the sum)
+	 * else add the input to secundairyDouble.
+	 * also print number in mainDisplay.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Run all actions for the NumberButtons
+		this.engine.addToNewNumberBuffer(buttonValue);
+		if(this.engine.getUsedMathToken() == null){
+			this.engine.setBaseDouble(Double.parseDouble(this.engine.getNewNumberBuffer().toString()));
+			this.display.setMainDisplay(Double.toString(this.engine.getBaseDouble()));
+		}else{
+			this.engine.setSecundairyDouble(Double.parseDouble(this.engine.getNewNumberBuffer().toString()));
+			this.display.setMainDisplay(Double.toString(this.engine.getSecundairyDouble()));
+		}
+		
 		
 	}
 
