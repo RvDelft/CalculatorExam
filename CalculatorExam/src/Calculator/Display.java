@@ -1,8 +1,6 @@
 package Calculator;
 
 import javax.swing.*;
-
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 public class Display {
@@ -14,8 +12,8 @@ public class Display {
 	 * installation both displays
 	 */
 	public Display(){
-		Font mainFont = new Font(Font.SERIF, Font.PLAIN, 20);
-		Font secundairyFont = new Font(Font.SERIF, Font.ITALIC, 15);
+		Font mainFont = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
+		Font secundairyFont = new Font(Font.SANS_SERIF, Font.ITALIC, 15);
 		this.mainDisplay = new JTextField("testm");
 		this.mainDisplay.setEditable(false);
 		this.mainDisplay.setHorizontalAlignment(JTextField.RIGHT);

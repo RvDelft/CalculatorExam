@@ -23,6 +23,7 @@ public class NumberButtons extends Buttons implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.engine.addToNewNumberBuffer(buttonValue);
+		System.out.print(this.engine.getNewNumberBuffer().toString());
 		if(this.engine.getUsedMathToken() == null){
 			this.engine.setBaseDouble(Double.parseDouble(this.engine.getNewNumberBuffer().toString()));
 			this.display.setMainDisplay(Double.toString(this.engine.getBaseDouble()));

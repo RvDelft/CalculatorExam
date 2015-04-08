@@ -21,6 +21,6 @@ public class Buttons extends JButton{
 		this.engine = engine;
 		this.display = display;
 		this.buttonValue = buttonValue;
-		this.setPreferredSize(new Dimension(50,40));
+		this.setPreferredSize(new Dimension(60,40));
 	}
 }

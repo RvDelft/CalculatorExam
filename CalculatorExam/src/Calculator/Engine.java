@@ -88,10 +88,23 @@ public class Engine {
 	}
 	/**
 	 * method to add number to newNumberBuffer 
+	 * also build in option to make the number negative.
 	 * @param String numberValue
 	 */
 	public void addToNewNumberBuffer(String numberValue){
-		this.newNumberBuffer.append(numberValue);
+		if(numberValue != "+/-"){
+			this.newNumberBuffer.append(numberValue);
+		}else{
+			String numberTEMP = this.newNumberBuffer.toString();
+			if(this.newNumberBuffer.charAt(0) != '-'){
+				this.newNumberBuffer.delete(0, this.newNumberBuffer.length());
+				this.newNumberBuffer.append("-");
+				this.newNumberBuffer.append(numberTEMP);
+			}else{
+				this.newNumberBuffer.deleteCharAt(0);
+			}
+		}
+
 	}
 	/**
 	 * method to clear numberBuffer for a new round
