@@ -5,7 +5,7 @@ public class Engine {
 	private MathCalculation mathcalculation;
 	private Display display;
 	private Memory memory;
-	private double baseDouble;
+	private double baseDouble = 0.00;
 	private double secundairyDouble;
 	private String usedMathToken;
 	private boolean alReadyCalculated;
@@ -131,5 +131,26 @@ public class Engine {
 	 */
 	public void clearTotalSumBuffer(){
 		this.totalSumBuffer.delete(0, this.totalSumBuffer.length());
+	}
+	/**
+	 * calculate with the given numbers.
+	 * use mathcalculation class
+	 */
+	public void doMath(){
+		if(this.usedMathToken == "+"){
+			this.baseDouble = this.mathcalculation.plus(this.baseDouble, this.secundairyDouble);
+		}else if(this.usedMathToken == "-"){
+			this.baseDouble = this.mathcalculation.minus(this.baseDouble,  this.secundairyDouble);
+		}else if(this.usedMathToken == "*"){
+			this.baseDouble = this.mathcalculation.multiply(this.baseDouble,  this.secundairyDouble);
+		}else if(this.usedMathToken == "/"){
+			this.baseDouble = this.mathcalculation.divide(this.baseDouble, this.secundairyDouble);
+		}else if(this.usedMathToken == "√"){
+			this.baseDouble = this.mathcalculation.sqrt(this.baseDouble);
+		}else if(this.usedMathToken == "%"){
+			this.baseDouble = this.mathcalculation.procentOf(this.baseDouble, this.secundairyDouble);
+		}else if(this.usedMathToken == "1/x"){
+			this.baseDouble = this.mathcalculation.oneDivideX(this.baseDouble);
+		}
 	}
 }

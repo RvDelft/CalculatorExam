@@ -22,9 +22,15 @@ public class NumberButtons extends Buttons implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(this.engine.getNewNumberBuffer().toString() == "" && buttonValue == "+/-"){
+			this.engine.addToNewNumberBuffer(Double.toString(this.engine.getBaseDouble()));
+		}
 		this.engine.addToNewNumberBuffer(buttonValue);
-		System.out.print(this.engine.getNewNumberBuffer().toString());
-		if(this.engine.getUsedMathToken() == null){
+		if(this.engine.getAlReadyCalculated()){
+			this.display.setSecundairyDisplay(null);
+			this.engine.setAlReadyCalculated(false);
+		}
+		if(this.engine.getUsedMathToken() == null || this.engine.getUsedMathToken() == "="){
 			this.engine.setBaseDouble(Double.parseDouble(this.engine.getNewNumberBuffer().toString()));
 			this.display.setMainDisplay(Double.toString(this.engine.getBaseDouble()));
 		}else{

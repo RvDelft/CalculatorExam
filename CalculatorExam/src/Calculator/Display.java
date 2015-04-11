@@ -14,14 +14,14 @@ public class Display {
 	public Display(){
 		Font mainFont = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 		Font secundairyFont = new Font(Font.SANS_SERIF, Font.ITALIC, 15);
-		this.mainDisplay = new JTextField("testm");
+		this.mainDisplay = new JTextField();
 		this.mainDisplay.setEditable(false);
 		this.mainDisplay.setHorizontalAlignment(JTextField.RIGHT);
 		this.mainDisplay.setFont(mainFont);
 		this.mainDisplay.setPreferredSize(new Dimension(300, 40));
 		this.mainDisplay.setBorder(null);
 		this.mainDisplay.setVisible(true);
-		this.secundairyDisplay = new JTextField("tests");
+		this.secundairyDisplay = new JTextField();
 		this.secundairyDisplay.setEditable(false);
 		this.secundairyDisplay.setHorizontalAlignment(JTextField.RIGHT);
 		this.secundairyDisplay.setFont(secundairyFont);
