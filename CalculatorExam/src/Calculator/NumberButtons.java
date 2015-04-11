@@ -30,13 +30,7 @@ public class NumberButtons extends Buttons implements ActionListener{
 			this.display.setSecundairyDisplay(null);
 			this.engine.setAlReadyCalculated(false);
 		}
-		if(this.engine.getUsedMathToken() == null || this.engine.getUsedMathToken() == "="){
-			this.engine.setBaseDouble(Double.parseDouble(this.engine.getNewNumberBuffer().toString()));
-			this.display.setMainDisplay(Double.toString(this.engine.getBaseDouble()));
-		}else{
-			this.engine.setSecundairyDouble(Double.parseDouble(this.engine.getNewNumberBuffer().toString()));
-			this.display.setMainDisplay(Double.toString(this.engine.getSecundairyDouble()));
-		}
+		this.engine.addInputToDouble();
 		
 		
 	}

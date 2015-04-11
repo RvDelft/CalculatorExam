@@ -17,8 +17,10 @@ public class GUICalculator extends JFrame{
 	private JPanel numberButtonPanel;
 	private JPanel functionButtonPanel;
 	private JPanel displayPanel;
+	private JPanel optionButtonPanel;
 	private FunctionButtons[] functionButtons;
 	private NumberButtons[] numberButtons;
+	private OptionButtons[] optionButtons;
 	
 	/**
 	 * Constructor GUICalculator
@@ -35,11 +37,15 @@ public class GUICalculator extends JFrame{
 		this.numberButtonPanel = new JPanel();
 		this.functionButtonPanel = new JPanel();
 		this.displayPanel = new JPanel();
+		this.optionButtonPanel = new JPanel();
 		this.functionButtons = new FunctionButtons[8];
 		this.numberButtons = new NumberButtons[12];
+		this.optionButtons = new OptionButtons[3];
+		
 		
 		this.setNumberButtonPanel();
-		this.setFunctionButtonspanel();
+		this.setFunctionButtonsPanel();
+		this.setOptionButtonsPanel();
 		this.setDisplayPanel();
 		this.setButtonPanel();
 		this.setMainFrame();
@@ -71,7 +77,7 @@ public class GUICalculator extends JFrame{
 	 * the required values are all stored in the functionValue array.
 	 * when al of the values are looped into a button the FunctionButtons are added to a Panel
 	 */
-	private void setFunctionButtonspanel(){
+	private void setFunctionButtonsPanel(){
 		String[] functionValues = {"+","-","*","/","√","%","1/x","="};
 		for(int i = 0; i < this.functionButtons.length; i++){
 			this.functionButtons[i] = new FunctionButtons(this.engine, this.display, functionValues[i]);
@@ -79,6 +85,16 @@ public class GUICalculator extends JFrame{
 		}
 		this.functionButtonPanel.setPreferredSize(new Dimension(150, 200));
 		this.functionButtonPanel.setLayout(new FlowLayout());
+	}
+	
+	public void setOptionButtonsPanel(){
+		String[] optionValue = {"Backspace", "C", "CE"};
+		for(int i = 0; i < this.optionButtons.length; i++){
+			this.optionButtons[i] = new OptionButtons(this.engine, this.display, optionValue[i]);
+			this.optionButtonPanel.add(this.optionButtons[i]);
+		}
+		this.optionButtonPanel.setPreferredSize(new Dimension(300, 50));
+		this.optionButtonPanel.setLayout(new FlowLayout());
 	}
 	/**
 	 * add displays (main and secundairy) to displayPanel
@@ -95,9 +111,10 @@ public class GUICalculator extends JFrame{
 	 * added panels: numberButtonPanel and functionButtonPanel
 	 */
 	private void setButtonPanel(){
+		this.buttonPanel.add(this.optionButtonPanel, BorderLayout.NORTH);
 		this.buttonPanel.add(this.numberButtonPanel);
 		this.buttonPanel.add(this.functionButtonPanel);
-		this.buttonPanel.setPreferredSize(new Dimension(200,300));
+		this.buttonPanel.setPreferredSize(new Dimension(300,450));
 	}
 
 	/**

@@ -92,16 +92,24 @@ public class Engine {
 	 * @param String numberValue
 	 */
 	public void addToNewNumberBuffer(String numberValue){
-		if(numberValue != "+/-"){
-			this.newNumberBuffer.append(numberValue);
-		}else{
-			String numberTEMP = this.newNumberBuffer.toString();
-			if(this.newNumberBuffer.charAt(0) != '-'){
-				this.newNumberBuffer.delete(0, this.newNumberBuffer.length());
-				this.newNumberBuffer.append("-");
-				this.newNumberBuffer.append(numberTEMP);
+		if(numberValue != "Backspace"){
+			if(numberValue != "+/-"){
+				this.newNumberBuffer.append(numberValue);
 			}else{
-				this.newNumberBuffer.deleteCharAt(0);
+				String numberTEMP = this.newNumberBuffer.toString();
+				if(this.newNumberBuffer.charAt(0) != '-'){
+					this.newNumberBuffer.delete(0, this.newNumberBuffer.length());
+					this.newNumberBuffer.append("-");
+					this.newNumberBuffer.append(numberTEMP);
+				}else{
+					this.newNumberBuffer.deleteCharAt(0);
+				}	
+			}
+		}else{
+			try{
+				this.newNumberBuffer.deleteCharAt(this.newNumberBuffer.length()-1);
+			}catch(Exception e){
+				//do nothing
 			}
 		}
 
@@ -151,6 +159,34 @@ public class Engine {
 			this.baseDouble = this.mathcalculation.procentOf(this.baseDouble, this.secundairyDouble);
 		}else if(this.usedMathToken == "1/x"){
 			this.baseDouble = this.mathcalculation.oneDivideX(this.baseDouble);
+		}
+	}
+	/**
+	 * method to clear total sum or last number input
+	 * if all = true: clear all
+	 * else: last number
+	 * @param boolean all
+	 */
+	public void clearSum(boolean all){
+		if(all){
+			this.clearNewNumberBuffer();
+			this.setBaseDouble(0.00);
+			this.setSecundairyDouble(0.00);
+			this.display.setMainDisplay(null);
+			this.display.setSecundairyDisplay(null);
+			this.clearTotalSumBuffer();
+		}else{
+			this.clearNewNumberBuffer();
+			this.display.setMainDisplay(null);
+		}
+	}
+	public void addInputToDouble(){
+		if(this.getUsedMathToken() == null || this.getUsedMathToken() == "="){
+			this.setBaseDouble(Double.parseDouble(this.newNumberBuffer.toString()));
+			this.display.setMainDisplay(Double.toString(this.baseDouble));
+		}else{
+			this.setSecundairyDouble(Double.parseDouble(this.newNumberBuffer.toString()));
+			this.display.setMainDisplay(Double.toString(this.secundairyDouble));
 		}
 	}
 }
