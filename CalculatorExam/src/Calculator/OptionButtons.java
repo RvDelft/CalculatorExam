@@ -5,7 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class OptionButtons extends Buttons implements ActionListener{
-
+	/**
+	 * received params are used as argumend for the super constructor
+	 * added a actionListener
+	 * @param Engine engine
+	 * @param Display display
+	 * @param String buttonValue
+	 */
 	public OptionButtons(Engine engine, Display display, String buttonValue){
 		super(engine, display, buttonValue);
 		if(buttonValue == "Backspace"){
@@ -14,7 +20,12 @@ public class OptionButtons extends Buttons implements ActionListener{
 		addActionListener(this);
 	}
 	
-	
+	/**
+	 * every optionButton has a different function. 
+	 * backspace is for deleting the last input
+	 * C is for deleting the hole number in numberBuffer
+	 * CE is for deleting everything to start all over.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(buttonValue == "Backspace"){

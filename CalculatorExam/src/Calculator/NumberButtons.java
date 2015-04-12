@@ -28,6 +28,7 @@ public class NumberButtons extends Buttons implements ActionListener{
 		this.engine.addToNewNumberBuffer(buttonValue);
 		if(this.engine.getAlReadyCalculated()){
 			this.display.setSecundairyDisplay(null);
+			this.engine.clearTotalSumBuffer();
 			this.engine.setAlReadyCalculated(false);
 		}
 		this.engine.addInputToDouble();

@@ -1,5 +1,10 @@
 package Calculator;
 
+import java.awt.Color;
+import java.text.DecimalFormat;
+
+import javax.swing.border.LineBorder;
+
 public class Engine {
 
 	private MathCalculation mathcalculation;
@@ -11,6 +16,7 @@ public class Engine {
 	private boolean alReadyCalculated;
 	private StringBuffer newNumberBuffer;
 	private StringBuffer totalSumBuffer;
+	private DecimalFormat df = new DecimalFormat("##.############");
 
 	/**
 	 * Constructor Engine takes no parameter
@@ -135,6 +141,13 @@ public class Engine {
 		this.totalSumBuffer.append(sumValue);
 	}
 	/**
+	 * method to add double (and round up decimals) to totalSumBuffer
+	 * @param double sumValue
+	 */
+	public void addToTotalSumBuffer(double sumValue){
+		this.totalSumBuffer.append(df.format(sumValue));
+	}
+	/**
 	 * method to clear totalSumBuffer
 	 */
 	public void clearTotalSumBuffer(){
@@ -172,21 +185,24 @@ public class Engine {
 			this.clearNewNumberBuffer();
 			this.setBaseDouble(0.00);
 			this.setSecundairyDouble(0.00);
-			this.display.setMainDisplay(null);
 			this.display.setSecundairyDisplay(null);
 			this.clearTotalSumBuffer();
-		}else{
-			this.clearNewNumberBuffer();
-			this.display.setMainDisplay(null);
 		}
+		this.clearNewNumberBuffer();
+		this.display.setMainDisplay(0.00);
 	}
+	
+	/**
+	 * method to check if input has to be saved in baseDouble of secundairyDouble
+	 */
 	public void addInputToDouble(){
 		if(this.getUsedMathToken() == null || this.getUsedMathToken() == "="){
 			this.setBaseDouble(Double.parseDouble(this.newNumberBuffer.toString()));
-			this.display.setMainDisplay(Double.toString(this.baseDouble));
+			this.display.setMainDisplay(this.baseDouble);
 		}else{
 			this.setSecundairyDouble(Double.parseDouble(this.newNumberBuffer.toString()));
-			this.display.setMainDisplay(Double.toString(this.secundairyDouble));
+			this.display.setMainDisplay(this.secundairyDouble);
 		}
 	}
+	
 }

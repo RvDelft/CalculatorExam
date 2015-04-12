@@ -3,7 +3,7 @@ package Calculator;
 import java.awt.*;
 import javax.swing.*;
 
-public class Buttons extends JButton{
+public abstract class Buttons extends JButton{
 
 	protected Engine engine;
 	protected Display display;
@@ -22,5 +22,6 @@ public class Buttons extends JButton{
 		this.display = display;
 		this.buttonValue = buttonValue;
 		this.setPreferredSize(new Dimension(70,40));
+		this.setBorder(null);
 	}
 }

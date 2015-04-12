@@ -35,7 +35,8 @@ public class FunctionButtons extends Buttons implements ActionListener{
 		}else if(this.buttonValue == "1/x"){
 			if(this.engine.getUsedMathToken() == "1/x"){
 				this.engine.clearTotalSumBuffer();
-				this.engine.addToTotalSumBuffer("1/" + this.engine.getBaseDouble());
+				this.engine.addToTotalSumBuffer("1/");
+				this.engine.addToTotalSumBuffer(this.engine.getBaseDouble());
 			}else{
 				this.engine.addToTotalSumBuffer("1/" + this.engine.getNewNumberBuffer());
 			}
@@ -46,13 +47,13 @@ public class FunctionButtons extends Buttons implements ActionListener{
 		}
 		this.display.setSecundairyDisplay(this.engine.getTotalSumBuffer().toString());
 		if(buttonValue == "=" || buttonValue == "√" || buttonValue == "1/x"){
-			this.display.setMainDisplay(Double.toString(this.engine.getBaseDouble()));
+			this.display.setMainDisplay(this.engine.getBaseDouble());
 			this.engine.setAlReadyCalculated(true);
 			this.engine.clearTotalSumBuffer();
 			this.engine.addToTotalSumBuffer(Double.toString(this.engine.getBaseDouble()));
 			this.engine.setSecundairyDouble(0.00);
 		}else{
-			this.display.setMainDisplay(null);
+			this.display.setMainDisplay(0.00);
 
 		}
 		this.engine.clearNewNumberBuffer();

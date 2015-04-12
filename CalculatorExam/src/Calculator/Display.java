@@ -1,12 +1,15 @@
 package Calculator;
 
 import javax.swing.*;
+
 import java.awt.Dimension;
 import java.awt.Font;
+import java.text.DecimalFormat;
 public class Display {
 
 	private JTextField mainDisplay;
 	private JTextField secundairyDisplay;
+	private DecimalFormat df = new DecimalFormat("##.############");
 	
 	/**
 	 * installation both displays
@@ -31,10 +34,11 @@ public class Display {
 	}
 	/**
 	 * setter method of mainDisplay
+	 * every number has to be round up
 	 * @param String displayValue
 	 */
-	public void setMainDisplay(String displayValue){
-		this.mainDisplay.setText(displayValue);
+	public void setMainDisplay(double displayValue){
+		this.mainDisplay.setText(df.format(displayValue));
 	}
 	/**
 	 * getter method of mainDisplay
@@ -49,6 +53,14 @@ public class Display {
 	 */
 	public void setSecundairyDisplay(String displayValue){
 		this.secundairyDisplay.setText(displayValue);
+	}
+	/**
+	 * because in the secundairy display there are also string values i've made
+	 * a extra method to round the given double up
+	 * @param double displayValue
+	 */
+	public void setSecundairyDisplayd(double displayValue){
+		this.secundairyDisplay.setText(df.format(displayValue));
 	}
 	/**
 	 * getter method of secundairyDisplay
