@@ -1,15 +1,12 @@
 package Calculator;
 
-import java.awt.Color;
 import java.text.DecimalFormat;
 
-import javax.swing.border.LineBorder;
 
 public class Engine {
 
 	private MathCalculation mathcalculation;
 	private Display display;
-	private Memory memory;
 	private double baseDouble = 0.00;
 	private double secundairyDouble;
 	private String usedMathToken;

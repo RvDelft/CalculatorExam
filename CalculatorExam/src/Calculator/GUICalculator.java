@@ -10,12 +10,11 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-public class GUICalculator{
+public class GUICalculator extends JApplet{
 
 	private Engine engine;
 	private Display display;
 	private Memory memory;
-	private JPanel mainPanel;
 	private JPanel buttonPanel;
 	private JPanel numberButtonPanel;
 	private JPanel functionButtonPanel;
@@ -56,7 +55,7 @@ public class GUICalculator{
 		this.setMemoryButtonPanel();
 		this.setDisplayPanel();
 		this.setButtonPanel();
-		this.setMainPanel();
+		this.setMain();
 	}
 	/**
 	 * method to make array of numberButtons.
@@ -150,17 +149,11 @@ public class GUICalculator{
 	 * method to install the mainFrame.
 	 * add the panels
 	 */
-	private void setMainPanel(){
-		this.mainPanel.setLayout(new BorderLayout());
-		this.mainPanel.add(BorderLayout.NORTH, this.displayPanel);
-		this.mainPanel.add(BorderLayout.CENTER, this.buttonPanel);
-		this.mainPanel.setVisible(true);
-	}
-	/**
-	 * getter method for mainPanel;
-	 * @return JPanel mainPanel
-	 */
-	public JPanel getMainPanel(){
-		return mainPanel;
+	private void setMain(){
+		this.setLayout(new BorderLayout());
+		this.add(BorderLayout.NORTH, this.displayPanel);
+		this.add(BorderLayout.CENTER, this.buttonPanel);
+		this.setVisible(true);
+		this.setPreferredSize(new Dimension(500,400));
 	}
 }

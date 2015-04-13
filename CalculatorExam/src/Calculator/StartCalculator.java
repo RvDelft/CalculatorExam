@@ -2,30 +2,28 @@ package Calculator;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JApplet;
 import javax.swing.JFrame;
 
-public class StartCalculator extends JFrame{
-	private GUICalculator start;
+public class StartCalculator extends JApplet{
+
+	public StartCalculator(){
+		getContentPane().add(new GUICalculator());
+	}
 	/**
 	 * start method
 	 * @param String[] args
 	 */
 	public static void main(String[] args) {
-		StartCalculator startCal = new StartCalculator();
-		startCal.go();
+		GUICalculator start = new GUICalculator();
+		JFrame frame = new JFrame();	
+
+		frame.setLayout(new BorderLayout());
+		frame.getContentPane().add(start);
+		frame.setVisible(true);
+		frame.pack();
 
 
-	}
-	/**
-	 * method to make JFrame (run without Servlet)
-	 */
-	public void go(){
-		start = new GUICalculator();
-		this.setLayout(new BorderLayout());
-		this.getContentPane().add(start.getMainPanel());
-		this.setVisible(true);
-		this.pack();
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 }
