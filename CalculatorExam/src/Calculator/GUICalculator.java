@@ -38,7 +38,6 @@ public class GUICalculator extends JApplet{
 		this.display = new Display();
 		this.engine = new Engine(this.display);
 		this.memory = new Memory();
-		this.mainPanel = new JPanel(new BorderLayout());
 		this.buttonPanel = new JPanel(new BorderLayout());
 		this.numberButtonPanel = new JPanel();
 		this.functionButtonPanel = new JPanel();
